@@ -69,6 +69,9 @@ export const useWizardStore = defineStore('wizard', () => {
     }
     return cityMap[city.value] || 'A1001'
   }
+  
+  // Backward-compat alias for legacy usage in components
+  const getMockAddressId = () => getAddressId()
 
   // Actions
   const setCity = (newCity) => {
@@ -228,6 +231,10 @@ export const useWizardStore = defineStore('wizard', () => {
     // API Actions
     checkCoverage,
     getRecommendations,
-    reset
+    reset,
+    
+    // Helpers
+    getAddressId,
+    getMockAddressId,
   }
 })

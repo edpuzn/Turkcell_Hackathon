@@ -225,7 +225,7 @@ func (r *recommender) buildTechPriority(preferTech []string, availableTechs map[
 func (r *recommender) filterPlansByTech(plans []models.HomePlan, tech string) []models.HomePlan {
 	var filtered []models.HomePlan
 	for _, plan := range plans {
-		if plan.Tech == tech {
+		if strings.EqualFold(plan.Tech, tech) {
 			filtered = append(filtered, plan)
 		}
 	}
@@ -276,7 +276,7 @@ func (r *recommender) chooseTVPlan(totalHDHours int, allTV []models.TVPlan) []*m
 	if totalHDHours == 0 {
 		// TV yok seçeneği
 		candidates = append(candidates, nil)
-		
+
 		// En ucuz plan (küçük saatler için)
 		cheapest := r.findCheapestTVPlan(allTV)
 		if cheapest != nil {
@@ -377,7 +377,7 @@ func (r *recommender) generateMobileCombinations(candidates [][]models.MobilePla
 	// Her hattı ekle
 	for i := 1; i < len(candidates); i++ {
 		var newResult [][]models.MobilePlan
-		
+
 		for _, existing := range result {
 			for _, plan := range candidates[i] {
 				newCombo := make([]models.MobilePlan, len(existing)+1)
@@ -439,7 +439,7 @@ func (r *recommender) buildCombo(mobilePlans []models.MobilePlan, homePlan *mode
 	savings := 0.0
 
 	return &models.ComboResult{
-		ComboLabel:   comboLabel,
+		ComboLabel: comboLabel,
 		Items: models.ComboItems{
 			Mobile: mobileItems,
 			Home:   homePlan,
@@ -454,7 +454,7 @@ func (r *recommender) buildCombo(mobilePlans []models.MobilePlan, homePlan *mode
 // calculateMobileItems - Mobil hat öğelerini hesaplar
 func (r *recommender) calculateMobileItems(plans []models.MobilePlan) []models.MobileLineItem {
 	var items []models.MobileLineItem
-	
+
 	// Bu basit implementasyonda her plan için sabit bir line_id kullanıyoruz
 	// Gerçek uygulamada household bilgisi kullanılmalı
 	for i, plan := range plans {
@@ -465,7 +465,7 @@ func (r *recommender) calculateMobileItems(plans []models.MobilePlan) []models.M
 			Cost:   cost,
 		})
 	}
-	
+
 	return items
 }
 

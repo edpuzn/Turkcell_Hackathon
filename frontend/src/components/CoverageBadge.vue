@@ -117,6 +117,7 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
+import { getCoverageByAddress } from '@/utils/api'
 
 // Props
 const props = defineProps({
@@ -130,7 +131,6 @@ const props = defineProps({
 const loading = ref(true)
 const error = ref(null)
 const coverageData = ref(null)
-const allCoverageData = ref([])
 
 // Computed properties
 const showAlternativeNotice = computed(() => {
@@ -147,84 +147,21 @@ const loadCoverageData = async () => {
     loading.value = true
     error.value = null
 
-    // Mock coverage data - in real app this would be loaded from CSV
-    const mockData = [
-      {
-        address_id: 'IST_KAD_001',
-        city: 'İstanbul',
-        district: 'Kadıköy',
-        fiber: 1,
-        vdsl: 1,
-        fwa: 1,
-      },
-      {
-        address_id: 'IST_KAD_002',
-        city: 'İstanbul',
-        district: 'Kadıköy',
-        fiber: 0,
-        vdsl: 1,
-        fwa: 1,
-      },
-      {
-        address_id: 'IST_KAD_003',
-        city: 'İstanbul',
-        district: 'Kadıköy',
-        fiber: 0,
-        vdsl: 0,
-        fwa: 1,
-      },
-      {
-        address_id: 'IST_BES_001',
-        city: 'İstanbul',
-        district: 'Beşiktaş',
-        fiber: 1,
-        vdsl: 1,
-        fwa: 1,
-      },
-      {
-        address_id: 'IST_BES_002',
-        city: 'İstanbul',
-        district: 'Beşiktaş',
-        fiber: 1,
-        vdsl: 0,
-        fwa: 0,
-      },
-      { address_id: 'IST_SIS_001', city: 'İstanbul', district: 'Şişli', fiber: 0, vdsl: 1, fwa: 1 },
-      { address_id: 'IST_SIS_002', city: 'İstanbul', district: 'Şişli', fiber: 1, vdsl: 1, fwa: 0 },
-      { address_id: 'ANK_CAN_001', city: 'Ankara', district: 'Çankaya', fiber: 1, vdsl: 1, fwa: 1 },
-      { address_id: 'ANK_CAN_002', city: 'Ankara', district: 'Çankaya', fiber: 0, vdsl: 1, fwa: 1 },
-      {
-        address_id: 'ANK_KEC_001',
-        city: 'Ankara',
-        district: 'Keçiören',
-        fiber: 0,
-        vdsl: 0,
-        fwa: 1,
-      },
-      {
-        address_id: 'ANK_KEC_002',
-        city: 'Ankara',
-        district: 'Keçiören',
-        fiber: 0,
-        vdsl: 1,
-        fwa: 0,
-      },
-      { address_id: 'IZM_KON_001', city: 'İzmir', district: 'Konak', fiber: 1, vdsl: 1, fwa: 1 },
-      { address_id: 'IZM_KON_002', city: 'İzmir', district: 'Konak', fiber: 0, vdsl: 1, fwa: 1 },
-    ]
-
-    allCoverageData.value = mockData
-
-    // Find coverage data for the specific address
-    const found = mockData.find((item) => item.address_id === props.addressId)
-
-    if (found) {
-      coverageData.value = found
+    // Backend'den kapsama verisini al
+    const apiData = await getCoverageByAddress(props.addressId)
+    // apiData: [{ address_id, tech: 'fiber'|'vdsl'|'fwa', down_mbps }]
+    if (Array.isArray(apiData) && apiData.length > 0) {
+      const flags = { fiber: 0, vdsl: 0, fwa: 0 }
+      apiData.forEach((c) => {
+        const t = String(c.tech || '').toLowerCase()
+        if (t === 'fiber' || t === 'vdsl' || t === 'fwa') flags[t] = 1
+      })
+      coverageData.value = { address_id: props.addressId, ...flags }
     } else {
       error.value = `Adres ID "${props.addressId}" için kapsama bilgisi bulunamadı`
     }
   } catch (err) {
-    error.value = 'Kapsama verileri yüklenirken hata oluştu: ' + err.message
+    error.value = 'Kapsama verileri yüklenirken hata oluştu: ' + (err?.message || err)
   } finally {
     loading.value = false
   }

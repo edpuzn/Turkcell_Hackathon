@@ -3,22 +3,7 @@
     <!-- Header Section -->
     <div class="onboarding-header">
       <div class="header-content">
-        <div class="logo-section">
-          <div class="logo-placeholder">TURKCELL</div>
-          <h1 class="main-title">Ev+Mobil Paket Danışmanı</h1>
-          <p class="subtitle">Size en uygun paketi bulmak için 5 dakika ayırın</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- API Status Section -->
-    <div class="api-status-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <ApiStatus />
-          </div>
-        </div>
+        <div class="logo-section"></div>
       </div>
     </div>
 
@@ -36,13 +21,18 @@
           <div class="step-content">
             <h3 class="step-title">Hane & Adres Girişi</h3>
             <p class="step-description">
-              Şehir, ilçe seçimi ve hane bilgilerinizi girin. Kaç mobil hat, internet ihtiyacı ve TV
-              izleme sürenizi belirtin.
+              Şehir ve ilçe seçimi yaparak adres bilgilerinizi girin. Hane üyeleri sayısı, aktif
+              mobil hat sayısı ve her hat için internet ihtiyaçlarınızı belirtin.
             </p>
             <div class="step-features">
-              <span class="feature-tag">📍 Konum</span>
-              <span class="feature-tag">👥 Hane</span>
-              <span class="feature-tag">📱 Hat</span>
+              <span class="feature-tag">📍 Şehir & İlçe</span>
+              <span class="feature-tag">👥 Hane Üyeleri</span>
+              <span class="feature-tag">📱 Mobil Hatlar</span>
+              <span class="feature-tag">🌐 İnternet İhtiyacı</span>
+            </div>
+            <div class="step-time">
+              <i class="bi bi-clock me-1"></i>
+              <span>~2 dakika</span>
             </div>
           </div>
         </div>
@@ -54,12 +44,17 @@
             <h3 class="step-title">Kapsama Kontrolü</h3>
             <p class="step-description">
               Adresinizde hangi internet teknolojileri mevcut? Fiber, VDSL veya FWA uygunluğunu
-              kontrol edelim.
+              kontrol edelim ve size en uygun alternatifi önerelim.
             </p>
             <div class="step-features">
               <span class="feature-tag">🌐 Fiber</span>
               <span class="feature-tag">📡 VDSL</span>
               <span class="feature-tag">📶 FWA</span>
+              <span class="feature-tag">✅ Uygunluk</span>
+            </div>
+            <div class="step-time">
+              <i class="bi bi-clock me-1"></i>
+              <span>~1 dakika</span>
             </div>
           </div>
         </div>
@@ -68,15 +63,20 @@
         <div class="step-card" :class="{ active: currentStep === 3 }">
           <div class="step-number">3</div>
           <div class="step-content">
-            <h3 class="step-title">Öneri Kartları</h3>
+            <h3 class="step-title">Paket Önerileri</h3>
             <p class="step-description">
               Size en uygun 3 paket kombinasyonunu gösterelim. Mobil + Ev internet + TV paketleri,
-              indirimler ve tasarruflar.
+              indirimler ve tasarruf bilgileri ile birlikte.
             </p>
             <div class="step-features">
-              <span class="feature-tag">💳 Paket</span>
+              <span class="feature-tag">💳 Paket Seçimi</span>
               <span class="feature-tag">💰 Tasarruf</span>
-              <span class="feature-tag">📊 Detay</span>
+              <span class="feature-tag">📊 Detaylı Analiz</span>
+              <span class="feature-tag">🎯 Kişiselleştirilmiş</span>
+            </div>
+            <div class="step-time">
+              <i class="bi bi-clock me-1"></i>
+              <span>~2 dakika</span>
             </div>
           </div>
         </div>
@@ -87,13 +87,18 @@
           <div class="step-content">
             <h3 class="step-title">Özet & Randevu</h3>
             <p class="step-description">
-              Seçtiğiniz paketlerin özeti ve kurulum için uygun randevu slotları. Tarih ve saat
-              seçimi.
+              Seçtiğiniz paketlerin detaylı özeti ve kurulum için uygun randevu slotları. Tarih ve
+              saat seçimi ile siparişinizi tamamlayın.
             </p>
             <div class="step-features">
-              <span class="feature-tag">📋 Özet</span>
+              <span class="feature-tag">📋 Paket Özeti</span>
               <span class="feature-tag">📅 Randevu</span>
+              <span class="feature-tag">⏰ Tarih & Saat</span>
               <span class="feature-tag">✅ Onay</span>
+            </div>
+            <div class="step-time">
+              <i class="bi bi-clock me-1"></i>
+              <span>~1 dakika</span>
             </div>
           </div>
         </div>
@@ -104,12 +109,18 @@
           <div class="step-content">
             <h3 class="step-title">Sipariş Onayı</h3>
             <p class="step-description">
-              Siparişiniz alındı! Randevu bilgileri ve kurulum detayları ile birlikte onay mesajı.
+              Siparişiniz başarıyla alındı! Randevu bilgileri ve kurulum detayları ile birlikte onay
+              mesajı. Kurulum ekibi adresinize yönlendirilecek.
             </p>
             <div class="step-features">
               <span class="feature-tag">🎉 Başarı</span>
               <span class="feature-tag">📞 Kurulum</span>
+              <span class="feature-tag">📧 Onay</span>
               <span class="feature-tag">🏠 Ana Sayfa</span>
+            </div>
+            <div class="step-time">
+              <i class="bi bi-clock me-1"></i>
+              <span>~1 dakika</span>
             </div>
           </div>
         </div>
@@ -129,23 +140,23 @@
           </div>
         </div>
 
-        <div class="cta-buttons">
-          <button class="btn-secondary" @click="goToHome">
-            <i class="bi bi-house me-2"></i>
-            Ana Sayfa
-          </button>
-          <button class="btn-primary" @click="startWizard">
-            <i class="bi bi-play-circle me-2"></i>
-            Sihirbazı Başlat
-          </button>
+        <div class="cta-section">
+          <div class="cta-description">
+            <h3>Hazır mısınız?</h3>
+            <p>Birkaç dakika ayırarak size en uygun paketi bulalım</p>
+          </div>
+
+          <div class="cta-buttons">
+            <button class="btn-primary" @click="startWizard">
+              <i class="bi bi-play-circle me-2"></i>
+              Sihirbazı Başlat
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Footer -->
-    <div class="onboarding-footer">
-      <p>Turkcell Ev+Mobil Paket Danışmanı ile size en uygun paketi bulun</p>
-    </div>
   </div>
 </template>
 
@@ -166,26 +177,7 @@ onMounted(() => {
 })
 
 const startWizard = () => {
-  console.log('startWizard function called')
-  console.log('Router object:', router)
-  console.log('Current route:', router.currentRoute.value)
-
-  try {
-    router.push('/wizard')
-    console.log('Router.push called successfully')
-  } catch (error) {
-    console.error('Router.push error:', error)
-  }
-}
-
-const goToHome = () => {
-  console.log('goToHome function called')
-  try {
-    router.push('/wizard')
-    console.log('Router.push called successfully')
-  } catch (error) {
-    console.error('Router.push error:', error)
-  }
+  router.push('/wizard')
 }
 </script>
 
@@ -242,7 +234,7 @@ const goToHome = () => {
 
 .steps-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .steps-title {
@@ -343,6 +335,15 @@ const goToHome = () => {
   font-weight: 600;
 }
 
+.step-time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-mute);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
 .action-section {
   max-width: 800px;
   margin: 0 auto 3rem;
@@ -351,72 +352,121 @@ const goToHome = () => {
 .action-content {
   background: var(--color-background-card);
   border: 2px solid var(--color-border);
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
 }
 
 .info-box {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: var(--color-primary-lighter);
-  padding: 1.5rem;
-  border-radius: 16px;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary-lighter), var(--color-primary-light));
+  padding: 2rem;
+  border-radius: 20px;
+  margin-bottom: 0;
+  border: 1px solid var(--color-primary-light);
 }
 
 .info-icon {
-  width: 50px;
-  height: 50px;
-  background: var(--color-primary);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: var(--color-text-inverse);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
 }
 
 .info-text h4 {
   color: var(--color-primary-dark);
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
 }
 
 .info-text p {
-  color: var(--color-text-mute);
+  color: var(--color-text);
   margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--color-border);
+}
+
+.cta-description h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-description p {
+  font-size: 1.2rem;
+  color: var(--color-text-mute);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
 }
 
 .cta-buttons {
   display: flex;
-  gap: 1rem;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
-.btn-primary,
-.btn-secondary {
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
+.btn-primary {
+  padding: 1.25rem 3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  border-radius: 16px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-primary {
+  gap: 0.75rem;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: var(--color-text-inverse);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-secondary {
