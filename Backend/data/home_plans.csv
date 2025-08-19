@@ -1,0 +1,12 @@
+home_id,name,tech,down_mbps,monthly_price,install_fee
+201,Fiber 100,fiber,100,399,0
+202,Fiber 200,fiber,200,499,0
+203,VDSL 35,vdsl,35,329,0
+204,FWA 30,fwa,30,349,0
+205,Fiber 500,fiber,500,699,0
+206,Fiber 1G,fiber,1000,899,0
+207,VDSL 50,vdsl,50,379,50
+208,VDSL 100,vdsl,100,449,50
+209,FWA 50,fwa,50,399,25
+210,Fiber 250,fiber,250,549,0
+211,Fiber 750,fiber,750,799,0

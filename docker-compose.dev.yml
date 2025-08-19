@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.dev
+    container_name: turkcell-backend-dev
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - CSV_DIR=/app/data
+      - LOG_LEVEL=debug
+      - GO_ENV=development
+    volumes:
+      - ./Backend:/app
+      - ./Backend/data:/app/data:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    networks:
+      - turkcell-dev-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: turkcell-frontend-dev
+    ports:
+      - "5173:5173"
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      - NODE_ENV=development
+      - VITE_API_BASE_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    restart: unless-stopped
+    networks:
+      - turkcell-dev-network
+
+networks:
+  turkcell-dev-network:
+    driver: bridge

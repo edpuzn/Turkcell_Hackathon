@@ -1,0 +1,11 @@
+user_id,name,address_id,current_bundle_label
+1001,Ahmet Yılmaz,A1001,"Mobil(101,102)+Ev100"
+1002,Fatma Demir,A2001,"Mobil(103)+Ev200"
+1003,Mehmet Kaya,A1001,"Mobil(104)+Ev100"
+1004,Ayşe Özkan,A3001,"Mobil(105,106)+Ev500"
+1005,Ali Çelik,A2001,"Mobil(107)+Ev200"
+1006,Zeynep Arslan,A1001,"Mobil(108)+Ev100"
+1007,Can Yıldız,A4001,"Mobil(109)+Ev1G"
+1008,Elif Korkmaz,A3001,"Mobil(110)+Ev500"
+1009,Burak Şahin,A2001,"Mobil(101,102)+Ev200"
+1010,Selin Öztürk,A1001,"Mobil(103)+Ev100"

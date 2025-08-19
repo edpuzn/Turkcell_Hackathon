@@ -1,0 +1,11 @@
+address_id,city,district,fiber,vdsl,fwa
+A1001,Istanbul,Kadikoy,1,1,1
+A1002,Ankara,Cankaya,0,1,1
+A1003,Izmir,Bornova,1,0,1
+A2001,Istanbul,Beşiktaş,1,1,0
+A2002,Ankara,Keçiören,1,0,1
+A3001,Istanbul,Şişli,1,1,1
+A3002,Izmir,Konak,0,1,1
+A4001,Ankara,Yenimahalle,1,1,0
+A4002,Istanbul,Üsküdar,1,0,1
+A5001,Izmir,Karşıyaka,1,1,1

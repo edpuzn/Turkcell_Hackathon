@@ -1,0 +1,11 @@
+plan_id,plan_name,quota_gb,quota_min,monthly_price,overage_gb,overage_min
+101,GNÇ 10GB,10,500,230,25,0.5
+102,Bireysel 20GB,20,1000,350,22,0.4
+103,Platinum 30GB,30,2000,520,20,0.3
+104,GNÇ 5GB,5,300,180,30,0.6
+105,Bireysel 15GB,15,800,280,20,0.4
+106,Platinum 25GB,25,1500,450,18,0.3
+107,GNÇ 8GB,8,400,200,28,0.5
+108,Platinum 12GB,12,600,250,24,0.4
+109,Bireysel 35GB,35,2500,580,15,0.2
+110,GNÇ 6GB,6,350,190,32,0.6

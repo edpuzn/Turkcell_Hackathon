@@ -1,0 +1,11 @@
+rule_id,rule_type,description,discount_percent,applies_to
+401,bundle,Mobil+Ev,10,all
+402,bundle,Mobil+Ev+TV,15,all
+403,extra_line,2. Hat -%5 (mobil bileşen),5,mobile
+404,extra_line,3+ Hat -%10 (mobil bileşen),10,mobile
+405,student,Öğrenci İndirimi,8,all
+406,senior,65+ Yaş İndirimi,12,all
+407,family,Aile Paketi İndirimi,7,all
+408,corporate,Kurumsal İndirimi,15,all
+409,loyalty,Sadakat İndirimi,5,all
+410,new_customer,Yeni Müşteri İndirimi,20,all
